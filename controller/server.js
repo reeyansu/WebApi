@@ -1,20 +1,15 @@
-const endpoint =  require ('./endpoints/endpoint');
-const DataClass = require('./endpoints/dataclass');
+const express = require('express');
+const app = express();
+const PORT = 3000; 
 
-class Server
-{
-    constructor()
-    {
-        this.endpoint = new endpoint();
-        this.dataclass= new DataClass();
-    
-    }
-    main()
-    {
-        console.log("Hello World");
-        console.log(this.endpoint.getMessage());
-        this.dataclass.test();
-    }
-}
-const server = new Server();
-server.main();
+
+
+app.get('/', (req, res) => {
+  res.send( 'Hello from the API!' );
+});
+
+
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
